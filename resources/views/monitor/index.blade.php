@@ -17,14 +17,14 @@
 	        	@if(isset($lembagas))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
-                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/belanja/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
+                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/{{ $jenis }}/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
                 <?php $i++; ?>
                 @endforeach
 	        	@else
-	            <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/area/id/">Dinas</a></li>
-	            <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/area/id/">Kecamatan</a></li>
-	            <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/belanja/tipe/area/id/">BUMD</a></li>
-	            <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/belanja/tipe/area/id/">Lain-lain</a></li>
+                <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/{{ $jenis }}/tipe/area/id/">Dinas</a></li>
+                <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/{{ $jenis }}/tipe/area/id/">Kecamatan</a></li>
+                <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/{{ $jenis }}/tipe/area/id/">BUMD</a></li>
+                <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/{{ $jenis }}/tipe/area/id/">Lain-lain</a></li>
 	            @endif
 	        </ul>
 	    </div>
@@ -47,10 +47,10 @@
                 <?php $i++; ?>
                 @endforeach
 	        	@else
-                <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/bar/id/">Dinas</a></li>
-                <li style="color: #F1601D;"><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/bar/id/">Kecamatan</a></li>
-                <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/belanja/tipe/bar/id/">BUMD</a></li>
-                <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/belanja/tipe/bar/id/">Lain-lain</a></li>
+                <li style="color: #17A768;"><a href="{!! url() !!}/dinas/{{ $jenis }}/tipe/area/id/">Dinas</a></li>
+                <li style="color: #F1601D";><a href="{!! url() !!}/kecamatan/{{ $jenis }}/tipe/area/id/">Kecamatan</a></li>
+                <li style="color: #F1AD1D;"><a href="{!! url() !!}/bumd/{{ $jenis }}/tipe/area/id/">BUMD</a></li>
+                <li style="color: #BBAE93;"><a href="{!! url() !!}/other/{{ $jenis }}/tipe/area/id/">Lain-lain</a></li>
 	            @endif
 	        </ul>
 	    </div>

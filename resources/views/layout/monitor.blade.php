@@ -71,10 +71,10 @@
                                     <label for="tampil">Tampilkan</label>
                                     <select class="form-control" id="tampil" onchange="if(this[this.selectedIndex].value!=='')location.href=this.value;">
                                         <option value="{!! url() !!}">Semua</option>
-                                        <option value="{!! url() !!}/dinas">Dinas</option>
-                                        <option value="{!! url() !!}/kecamatan">Kecamatan</option>
-                                        <option value="{!! url() !!}/bumd">BUMD</option>
-                                        <option value="{!! url() !!}/other">Lain-lain</option>
+                                        <option value="{!! url() !!}/dinas/{{ $jenis }}/tipe/area/id">Dinas</option>
+                                        <option value="{!! url() !!}/kecamatan/{{ $jenis }}/tipe/area/id">Kecamatan</option>
+                                        <option value="{!! url() !!}/bumd/{{ $jenis }}/tipe/area/id">BUMD</option>
+                                        <option value="{!! url() !!}/other/{{ $jenis }}/tipe/area/id">Lain-lain</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -15,10 +15,6 @@ Route::get('/', function () {
     return redirect()->route('transparansi');
 });
 
-Route::get('/monitor', ['as' => 'monitor', function () {
-    return view('layout.index');
-}]);
-
 Route::get('/transparansi', [
     'as' => 'transparansi', 'uses' => 'AppController@index'
 ]);
@@ -35,16 +31,16 @@ Route::get('/dinas/{tipeDana?}/tipe/{type?}/id/{id?}', function ($tipeDana = "be
     return redirect()->route('transparansi')->withDana($tipeDana)->withId($id)->withFilter("dinas")->withType($type);
 });
 
-Route::get('/kecamatan/{type?}', function ($type = "area") {
-    return redirect()->route('transparansi')->withFilter("kecamatan")->withType($type);
+Route::get('/kecamatan/{tipeDana?}/tipe/{type?}/id/{id?}', function ($tipeDana = "belanja", $type = "area", $id = null) {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withId($id)->withFilter("kecamatan")->withType($type);
 });
 
-Route::get('/bumd/{type?}', function ($type = "area") {
-    return redirect()->route('transparansi')->withFilter("bumd")->withType($type);
+Route::get('/bumd/{tipeDana?}/tipe/{type?}/id/{id?}', function ($tipeDana = "belanja", $type = "area", $id = null) {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withId($id)->withFilter("bumd")->withType($type);
 });
 
-Route::get('/other/{type?}', function ($type = "area") {
-    return redirect()->route('transparansi')->withFilter("other")->withType($type);
+Route::get('/other/{tipeDana?}/tipe/{type?}/id/{id?}', function ($tipeDana = "belanja", $type = "area", $id = null) {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withId($id)->withFilter("lain-lain")->withType($type);
 });
 
 Route::get('/input', ['as' => 'data.input', function () {
