@@ -35,10 +35,44 @@ class AppController extends Controller
             if(session()->has('id')) {
                 $id = (int)session('id');
                 $breadcrumb = $breadcrumb." > ".ucwords(Lembaga::find($id)->nama);
-                $lembagas = null;
-                $datas = null;
+                $lemb = Lembaga::find($id);
+                $lembagas = [];
+                $datas = [];
+                $labels = [];
+                $years = DB::table('dana_lengkap')
+                    ->select(DB::raw('tahun'))
+                    ->where('tipe', ucwords($jenis))
+                    ->where('golongan', session('filter'))
+                    ->groupBy('tahun')
+                    ->get();
+                for($i = 0; $i < count($years); $i++) {
+                    $years[$i] = $years[$i]->tahun;
+                }
 
+                for($i = 0; $i < count($years); $i++) {
+                    $temp = ['year' => $years[$i]];
+                    $results = DB::table('dana_lengkap')
+                        ->select(DB::raw('sum(nilai) as sum, uraian, tahun'))
+                        ->where('tipe', ucwords($jenis))
+                        ->where('golongan', session('filter'))
+                        ->where('nama_lembaga', $lemb->nama)
+                        ->where('tahun', $years[$i])
+                        ->where('level', 2)
+                        ->groupBy('tahun')
+                        ->get();
+                    //dd($results);
+                    if($results != null) {
+                        foreach ($results as $result) {
+                            if(!in_array($result->uraian, $labels)) {
+                                array_push($labels, $result->uraian);
+                            }
+                            array_push($temp, $result->sum);
+                        }
+                    }
+                    array_push($datas, $temp);
+                }
             } else {
+                $id = null;
                 $lembagas = Lembaga::where('golongan', session('filter'))->get();
                 $datas = [];
                 $labels = [];
@@ -79,6 +113,7 @@ class AppController extends Controller
             }
 
             return view('monitor.index')
+                ->withId($id)
                 ->withJenis($jenis)
                 ->withBreadcrumb($breadcrumb)
                 ->withLembagas($lembagas)

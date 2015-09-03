@@ -17,9 +17,15 @@
 	        	@if(isset($lembagas))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
+                @if(in_array($lembaga->nama,$labels))
                 <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/{{ $jenis }}/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
+                @endif
                 <?php $i++; ?>
                 @endforeach
+                @elseif(isset($id))
+                @for($i = 0; $i < count($labels); $i++)
+                <li style="color: {{ $colors[$i] }};">{{ $labels[$i] }}</li>
+                @endfor
 	        	@else
                 <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/{{ $jenis }}/tipe/area/id/">Dinas</a></li>
                 <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/{{ $jenis }}/tipe/area/id/">Kecamatan</a></li>
@@ -43,9 +49,15 @@
 	        	@if(isset($lembagas))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
+                @if(in_array($lembaga->nama,$labels))
                 <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/belanja/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
+                @endif
                 <?php $i++; ?>
                 @endforeach
+                @elseif(isset($id))
+                @for($i = 0; $i < count($labels); $i++)
+                <li style="color: {{ $colors[$i] }};">{{ $labels[$i] }}</li>
+                @endfor
 	        	@else
                 <li style="color: #17A768;"><a href="{!! url() !!}/dinas/{{ $jenis }}/tipe/area/id/">Dinas</a></li>
                 <li style="color: #F1601D";><a href="{!! url() !!}/kecamatan/{{ $jenis }}/tipe/area/id/">Kecamatan</a></li>
