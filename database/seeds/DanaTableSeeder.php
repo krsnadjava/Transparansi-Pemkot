@@ -89,7 +89,7 @@ class DanaTableSeeder extends Seeder
             'kode' => "1.01 . 1.01.01 . 01.01 . 5.2",
             'uraian' => "Belanja Langsung",
             'nilai' => 214499392297,
-            'tahun' => 2014,
+            'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 1,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),

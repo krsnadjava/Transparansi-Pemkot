@@ -52,15 +52,12 @@ class AppController extends Controller
                 for($i = 0; $i < count($years); $i++) {
                     $temp = ['year' => $years[$i]];
                     $results = DB::table('dana_lengkap')
-                        ->select(DB::raw('sum(nilai) as sum, uraian, tahun'))
+                        ->select(DB::raw('nilai as sum, uraian, tahun'))
                         ->where('tipe', ucwords($jenis))
-                        ->where('golongan', session('filter'))
                         ->where('nama_lembaga', $lemb->nama)
                         ->where('tahun', $years[$i])
                         ->where('level', 2)
-                        ->groupBy('tahun')
                         ->get();
-                    //dd($results);
                     if($results != null) {
                         foreach ($results as $result) {
                             if(!in_array($result->uraian, $labels)) {
@@ -71,6 +68,7 @@ class AppController extends Controller
                     }
                     array_push($datas, $temp);
                 }
+                
             } else {
                 $id = null;
                 $lembagas = Lembaga::where('golongan', session('filter'))->get();

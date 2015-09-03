@@ -14,7 +14,7 @@
 	    <div class="col-lg-3">
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
-	        	@if(isset($lembagas))
+	        	@if(isset($lembagas) && !(isset($id)))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
                 @if(in_array($lembaga->nama,$labels))
@@ -23,8 +23,8 @@
                 <?php $i++; ?>
                 @endforeach
                 @elseif(isset($id))
-                @for($i = 0; $i < count($labels); $i++)
-                <li style="color: {{ $colors[$i] }};">{{ $labels[$i] }}</li>
+                @for($j = 0; $j < count($labels); $j++)
+                <li style="color: {{ $colors[$j] }};">{{ $labels[$j] }}</li>
                 @endfor
 	        	@else
                 <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/{{ $jenis }}/tipe/area/id/">Dinas</a></li>
@@ -46,7 +46,7 @@
 	    <div class="col-lg-3">
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
-	        	@if(isset($lembagas))
+	        	@if(isset($lembagas) && !(isset($id)))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
                 @if(in_array($lembaga->nama,$labels))
