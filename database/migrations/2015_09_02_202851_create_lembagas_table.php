@@ -15,6 +15,7 @@ class CreateLembagasTable extends Migration
         Schema::create('lembaga', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama')->nullable();
+            $table->string('golongan')->default("lain-lain");
             $table->timestamps();
         });
     }

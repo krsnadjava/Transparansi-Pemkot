@@ -14,15 +14,15 @@
 	    <div class="col-lg-3">
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
-	        	@if(isset($datas))
-	            <li style="color: #17A768;"><a href="{!! url() !!}">Dinas Pendidikan</a></li>
-	            <li style="color: #F1601D";><a href="{!! url() !!}">Dinas Kesehatan</a></li>
-	            <li style="color: #F1AD1D;"><a href="{!! url() !!}">Dinas Sosial</a></li>
+	        	@if(isset($lembagas))
+                @foreach($lembagas as $lembaga)
+                <li style="color: #17A768;"><a href="{!! url() !!}">{{ ucwords($lembaga->nama) }}</a></li>
+                @endforeach
 	        	@else
-	            <li style="color: #17A768;"><a href="{!! url() !!}/dinas/area">Dinas</a></li>
-	            <li style="color: #F1601D";><a href="{!! url() !!}">Kecamatan</a></li>
-	            <li style="color: #F1AD1D;"><a href="{!! url() !!}">BUMD</a></li>
-	            <li style="color: #BBAE93;"><a href="{!! url() !!}">Lain-lain</a></li>
+	            <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/area/id/">Dinas</a></li>
+	            <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/area/id/">Kecamatan</a></li>
+	            <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/belanja/tipe/area/id/">BUMD</a></li>
+	            <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/belanja/tipe/area/id/">Lain-lain</a></li>
 	            @endif
 	        </ul>
 	    </div>
@@ -38,15 +38,15 @@
 	    <div class="col-lg-3">
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
-	        	@if(isset($datas))
-	            <li style="color: #17A768;"><a href="{!! url() !!}">Dinas Pendidikan</a></li>
-	            <li style="color: #F1601D";><a href="{!! url() !!}">Dinas Kesehatan</a></li>
-	            <li style="color: #F1AD1D;"><a href="{!! url() !!}">Dinas Sosial</a></li>
+	        	@if(isset($lembagas))
+                @foreach($lembagas as $lembaga)
+                <li style="color: #17A768;"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                @endforeach
 	        	@else
-	            <li style="color: #17A768;"><a href="{!! url() !!}/dinas/bar">Dinas</a></li>
-	            <li style="color: #F1601D";><a href="{!! url() !!}">Kecamatan</a></li>
-	            <li style="color: #F1AD1D;"><a href="{!! url() !!}">BUMD</a></li>
-	            <li style="color: #BBAE93;"><a href="{!! url() !!}">Lain-lain</a></li>
+                <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/bar/id/">Dinas</a></li>
+                <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/bar/id/">Kecamatan</a></li>
+                <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/belanja/tipe/bar/id/">BUMD</a></li>
+                <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/belanja/tipe/bar/id/">Lain-lain</a></li>
 	            @endif
 	        </ul>
 	    </div>

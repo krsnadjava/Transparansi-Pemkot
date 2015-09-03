@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use DB;
+
+use App\Dana;
+use App\Lembaga;
+use App\Tag;
+
 class AppController extends Controller
 {
     public function index()
     {
         if(session()->has('filter')) {
+            /*
             if(session('filter') === "dinas") {
-                $datas = array(
-                    ["x" => [3064, 1722, 3485], "y" => "2014-12-05"],
-                    ["x" => [2783, 1283, 5403], "y" => "2015-02-20"]
-                );
-                return view('monitor.index')->withBreadcrumb("Belanja | Dinas")->withDatas("test")->withType(session('type'));
+                return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'));
             } elseif(session('filter') === "kecamatan") {
                 return view('monitor.index')->withBreadcrumb("Belanja | Kecamatan")->withType(session('type'));
             } elseif(session('filter') === "bumd") {
@@ -25,8 +28,78 @@ class AppController extends Controller
             } else {
                 return view('monitor.index')->withBreadcrumb("Belanja | Lain-lain")->withType(session('type'));
             }
+            */
+
+            $jenis = session('dana');
+            $breadcrumb = ucwords($jenis)." | ".ucwords(session('filter'));
+            if(session()->has('id')) {
+                $id = (int)session('id');
+                $breadcrumb = $breadcrumb." > ".ucwords(Lembaga::findOrFail($id)->nama);
+            } else {
+                $lembagas = Lembaga::where('golongan', session('filter'))->get();
+                $danas = [];
+                foreach($lembagas as $lembaga) {
+                    foreach ($lembaga->danas as $dana) {
+                        array_push($danas, $dana);
+                    }
+                }
+            }
+
+            return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'));
         } else {
-            return view('monitor.index')->withBreadcrumb("Belanja | Semua")->withType(session('type'));
+            if(session()->has('filter')) {
+                $jenis = session('dana');
+            } else {
+                $jenis = "belanja";
+            }
+            $dinas = DB::table('dana_lengkap')
+                ->select(DB::raw('sum(nilai), tahun'))
+                ->where('tipe', ucwords($jenis))
+                ->where('golongan', "dinas")
+                ->groupBy('tahun')
+                ->get();
+            $kecamatan = DB::table('dana_lengkap')
+                ->select(DB::raw('sum(nilai), tahun'))
+                ->where('tipe', ucwords($jenis))
+                ->where('golongan', "kecamatan")
+                ->groupBy('tahun')
+                ->get();
+            $bumd = DB::table('dana_lengkap')
+                ->select(DB::raw('sum(nilai), tahun'))
+                ->where('tipe', ucwords($jenis))
+                ->where('golongan', "bumd")
+                ->groupBy('tahun')
+                ->get();
+            $other = DB::table('dana_lengkap')
+                ->select(DB::raw('sum(nilai), tahun'))
+                ->where('tipe', ucwords($jenis))
+                ->where('golongan', "lain-lain")
+                ->groupBy('tahun')
+                ->get();
+            $datas = ['dinas' => $dinas, 'kecamatan' => $kecamatan, 'bumd' => $bumd, 'other' => $other];
+            dd($datas);
+            return view('monitor.index')->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas);
         }
+    }
+
+    public function store(Request $request) {
+        $dana = new Dana;
+        $dana->kode = $request->kode;
+        $dana->uraian = $request->uraian;
+        if($request->nilai != null) {
+            $dana->nilai = $request->nilai;
+        }
+        if($request->tahun != null) {
+            $dana->tahun = $request->tahun;
+        }
+        if($request->level != null) {
+            $dana->level = $request->level;
+        }
+        $dana->lembaga_id = $request->lembaga_id;
+        $dana->save();
+        foreach($request->tags as $tag) {
+            $dana->tags()->attach($tag);
+        }
+        return redirect()->route('data.input');
     }
 }

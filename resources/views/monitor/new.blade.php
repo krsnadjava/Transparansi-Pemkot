@@ -85,71 +85,72 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form>
+                                    {!! Form::open([
+                                      'route' => 'data.store'
+                                    ]) !!}
                                         <div class="row">
                                             <div class="form-group col-lg-8">
-                                                <label>Kode Program</label>
-                                                <input type="text" class="form-control" placeholder="Kode">
+                                                {!! Form::label('kode', 'Kode') !!}
+                                                {!! Form::text('kode', null, ['class' => "form-control", 'placeholder' => 'Kode']) !!}                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-lg-8">
+                                                {!! Form::label('uraian', 'Uraian') !!}
+                                                {!! Form::text('uraian', null, ['class' => "form-control", 'placeholder' => 'Uraian']) !!} 
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-lg-8">
-                                                <label>Nama Program</label>
-                                                <input type="text" class="form-control" placeholder="Nama">
+                                                {!! Form::label('nilai', 'Nilai') !!}
+                                                {!! Form::text('nilai', null, ['class' => "form-control", 'placeholder' => 'Nilai']) !!}
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-lg-8">
-                                                <label>Besaran Dana</label>
-                                                <input type="text" class="form-control" placeholder="Besaran">
+                                                {!! Form::label('tahun', 'Tahun') !!}
+                                                {!! Form::text('tahun', null, ['class' => "form-control", 'placeholder' => 'Tahun']) !!}
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-lg-8">
-                                                <label>Tipe Dana</label>
-                                                <select class="form-control">
-                                                    <option>Belanja</option>
-                                                    <option>Pendapatan</option>
+                                                {!! Form::label('level', 'Level') !!}
+                                                <select class="form-control" name="level">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-lg-8">
+                                                {!! Form::label('lembaga_id', 'Lembaga') !!}
+                                                <select class="form-control" name="lembaga_id">
+                                                    @foreach($lembagas as $lembaga)
+                                                    <option value="{{ $lembaga->id }}">{{ $lembaga->nama }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-lg-6">
                                                 <div>
-                                                    <label>Tags</label>
+                                                    {!! Form::label('tags', 'Tags') !!}
                                                 </div>
+                                                @foreach($tags as $tag)
                                                 <div class="checkbox-inline">
                                                     <label>
-                                                        <input type="checkbox"> Pengadaan
+                                                        <input name="tags[]" type="checkbox" value="{{ $tag->id }}"> {{ $tag->nama }}
                                                     </label>
                                                 </div>
-                                                <div class="checkbox-inline">
-                                                    <label>
-                                                        <input type="checkbox"> Kertas
-                                                    </label>
-                                                </div>
-                                                <button id="tag-plus" type="button" class="btn btn-info btn-circle">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">
                                             Send Data
                                         </button>
-                                    </form>
-                                </div>
-                                <div id="tag-form" class="col-lg-6 hidden">
-                                    <form>
-                                        <div class="row">
-                                            <div class="form-group col-lg-8">
-                                                <label>Nama Tag</label>
-                                                <input type="text" class="form-control" placeholder="Nama Tag">
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">
-                                            Create Tag
-                                        </button>
-                                    </form>
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>

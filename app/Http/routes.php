@@ -23,8 +23,16 @@ Route::get('/transparansi', [
     'as' => 'transparansi', 'uses' => 'AppController@index'
 ]);
 
-Route::get('/dinas/{type?}', function ($type = "area") {
-    return redirect()->route('transparansi')->withFilter("dinas")->withType($type);
+Route::get('/transparansi/{tipeDana?}', function ($tipeDana = "belanja") {
+    return redirect()->route('transparansi')->withDana($tipeDana);
+});
+
+Route::get('/transparansi/{tipeDana?}/tipe/{type?}', function ($tipeDana = "belanja", $type = "area") {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withType($type);
+});
+
+Route::get('/dinas/{tipeDana?}/tipe/{type?}/id/{id?}', function ($tipeDana = "belanja", $type = "area", $id = null) {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withId($id)->withFilter("dinas")->withType($type);
 });
 
 Route::get('/kecamatan/{type?}', function ($type = "area") {
@@ -40,5 +48,9 @@ Route::get('/other/{type?}', function ($type = "area") {
 });
 
 Route::get('/input', ['as' => 'data.input', function () {
-    return view('monitor.new');
+    $lembagas = App\Lembaga::all();
+    $tags = App\Tag::all();
+    return view('monitor.new')->withLembagas($lembagas)->withTags($tags);
 }]);
+
+Route::post('/input', ['as' => 'data.store', 'uses' => 'AppController@store']);
