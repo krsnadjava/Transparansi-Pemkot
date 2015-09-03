@@ -57,43 +57,53 @@
 	@if(isset($datas))
 	Morris.Area({
         element: 'morris-area-chart',
-        data: [{
-            period: '2014-12-05',
-            a: 3064,
-            b: 1722,
-            c: 3485
-        }, {
-            period: '2015-02-20',
-            a: 2783,
-            b: 1283,
-            c: 5403
-        }],
+        data: [
+        @for ($i = 0; $i < count($datas); $i++)
+        {
+            period: '{{ $datas[$i]['year'] }}',
+            a: {{ $datas[$i]['dinas'] }},
+            b: {{ $datas[$i]['kecamatan'] }},
+            c: {{ $datas[$i]['bumd'] }},
+            d: {{ $datas[$i]['other'] }}
+        @if($i < count($datas)-1)
+        },
+        @else
+        }
+        @endif
+        @endfor
+        ],
         xkey: 'period',
-        ykeys: ['a', 'b', 'c'],
-        labels: ['Dinas Pendidikan', 'Dinas Kesehatan', 'Dinas Sosial'],
-        lineColors: ["#17A768", "#F1601D", "#F1AD1D"],
+        ykeys: ['a', 'b', 'c', 'd'],
+        xLabels: "year",
+        labels: ['Dinas', 'Kecamatan', 'BUMD', 'Other'],
+        lineColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
         pointSize: 3,
         hideHover: 'auto',
         resize: true
     });
     Morris.Bar({
         element: 'morris-bar-chart',
-        data: [{
-            period: '2014',
-            a: 3064,
-            b: 1722,
-            c: 3485
-        }, {
-            period: '2015',
-            a: 2783,
-            b: 1283,
-            c: 5403
-        }],
+        data: [
+        @for ($i = 0; $i < count($datas); $i++)
+        {
+            period: '{{ $datas[$i]['year'] }}',
+            a: {{ $datas[$i]['dinas'] }},
+            b: {{ $datas[$i]['kecamatan'] }},
+            c: {{ $datas[$i]['bumd'] }},
+            d: {{ $datas[$i]['other'] }}
+        @if($i < count($datas)-1)
+        },
+        @else
+        }
+        @endif
+        @endfor
+        ],
         xkey: 'period',
-        ykeys: ['a', 'b', 'c'],
-        labels: ['Dinas Pendidikan', 'Dinas Kesehatan', 'Dinas Sosial'],
+        ykeys: ['a', 'b', 'c', 'd'],
+        xLabels: "year",
+        labels: ['Dinas', 'Kecamatan', 'BUMD', 'Other'],
         hideHover: 'auto',
-        barColors: ["#17A768", "#F1601D", "#F1AD1D"],
+        barColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
         stacked: true,
         resize: true
     });

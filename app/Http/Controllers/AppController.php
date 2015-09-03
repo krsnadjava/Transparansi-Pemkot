@@ -53,31 +53,35 @@ class AppController extends Controller
                 $jenis = "belanja";
             }
             $dinas = DB::table('dana_lengkap')
-                ->select(DB::raw('sum(nilai), tahun'))
+                ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "dinas")
                 ->groupBy('tahun')
                 ->get();
             $kecamatan = DB::table('dana_lengkap')
-                ->select(DB::raw('sum(nilai), tahun'))
+                ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "kecamatan")
                 ->groupBy('tahun')
                 ->get();
             $bumd = DB::table('dana_lengkap')
-                ->select(DB::raw('sum(nilai), tahun'))
+                ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "bumd")
                 ->groupBy('tahun')
                 ->get();
             $other = DB::table('dana_lengkap')
-                ->select(DB::raw('sum(nilai), tahun'))
+                ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "lain-lain")
                 ->groupBy('tahun')
                 ->get();
-            $datas = ['dinas' => $dinas, 'kecamatan' => $kecamatan, 'bumd' => $bumd, 'other' => $other];
-            dd($datas);
+            $datas = [];
+            $i = 0;
+            foreach ($dinas as $data) {
+                array_push($datas, ['year' => $data->tahun, 'dinas' => $data->sum, 'kecamatan' => $kecamatan[$i]->sum, 'bumd' => $bumd[$i]->sum, 'other' => $other[$i]->sum]);
+                $i++;
+            }
             return view('monitor.index')->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas);
         }
     }
