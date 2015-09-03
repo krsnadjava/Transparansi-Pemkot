@@ -22,17 +22,6 @@ class AppController extends Controller
         $alphas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah", "ai", "aj", "ak"];
         
         if(session()->has('filter')) {
-            /*
-            if(session('filter') === "dinas") {
-                return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'));
-            } elseif(session('filter') === "kecamatan") {
-                return view('monitor.index')->withBreadcrumb("Belanja | Kecamatan")->withType(session('type'));
-            } elseif(session('filter') === "bumd") {
-                return view('monitor.index')->withBreadcrumb("Belanja | Badan Usaha Milik Daerah")->withType(session('type'));
-            } else {
-                return view('monitor.index')->withBreadcrumb("Belanja | Lain-lain")->withType(session('type'));
-            }
-            */
 
             /* Tipe Dananya Apa */
             if(session()->has('dana')) {
@@ -52,6 +41,7 @@ class AppController extends Controller
             } else {
                 $lembagas = Lembaga::where('golongan', session('filter'))->get();
                 $datas = [];
+                $labels = [];
                 $years = DB::table('dana_lengkap')
                     ->select(DB::raw('tahun'))
                     ->where('tipe', ucwords($jenis))
@@ -71,26 +61,28 @@ class AppController extends Controller
                             ->where('golongan', session('filter'))
                             ->where('nama_lembaga', $lembaga->nama)
                             ->where('tahun', $years[$i])
-                            ->where('level', 5)
+                            ->where('level', 1)
                             ->groupBy('tahun')
                             ->groupBy('nama_lembaga')
                             ->get();
                         if($results != null) {
                             foreach ($results as $result) {
+                                if(!in_array($result->nama_lembaga, $labels)) {
+                                    array_push($labels, $result->nama_lembaga);
+                                }
                                 array_push($temp, $result->sum);
                             }
                         }
                     }
                     array_push($datas, $temp);
                 }
-
-                dd($datas);
             }
 
             return view('monitor.index')
                 ->withJenis($jenis)
                 ->withBreadcrumb($breadcrumb)
                 ->withLembagas($lembagas)
+                ->withLabels($labels)
                 ->withDatas($datas)
                 ->withType(session('type'))
                 ->withColors($colors)
@@ -109,24 +101,28 @@ class AppController extends Controller
                 ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "dinas")
+                ->where('level', 1)
                 ->groupBy('tahun')
                 ->get();
             $kecamatan = DB::table('dana_lengkap')
                 ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "kecamatan")
+                ->where('level', 1)
                 ->groupBy('tahun')
                 ->get();
             $bumd = DB::table('dana_lengkap')
                 ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "bumd")
+                ->where('level', 1)
                 ->groupBy('tahun')
                 ->get();
             $other = DB::table('dana_lengkap')
                 ->select(DB::raw('sum(nilai) as sum, tahun'))
                 ->where('tipe', ucwords($jenis))
                 ->where('golongan', "lain-lain")
+                ->where('level', 1)
                 ->groupBy('tahun')
                 ->get();
             $datas = [];
@@ -141,7 +137,7 @@ class AppController extends Controller
                 $i++;
             }
             $labels = ["Dinas", "Kecamatan", "BUMD", "Lain-lain"];
-            
+
             return view('monitor.index')
                 ->withJenis($jenis)
                 ->withBreadcrumb(ucwords($jenis)." | Semua")
