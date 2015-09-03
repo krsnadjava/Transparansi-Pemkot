@@ -15,8 +15,10 @@
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
 	        	@if(isset($lembagas))
+                <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
-                <li style="color: #17A768;"><a href="{!! url() !!}">{{ ucwords($lembaga->nama) }}</a></li>
+                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                <?php $i++; ?>
                 @endforeach
 	        	@else
 	            <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/area/id/">Dinas</a></li>
@@ -39,12 +41,14 @@
 	        Keterangan :
 	        <ul style="list-style-type: square; font-size: 14px;">
 	        	@if(isset($lembagas))
+                <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
-                <li style="color: #17A768;"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                <?php $i++; ?>
                 @endforeach
 	        	@else
                 <li style="color: #17A768;"><a href="{!! url() !!}/pemkot/dinas/belanja/tipe/bar/id/">Dinas</a></li>
-                <li style="color: #F1601D";><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/bar/id/">Kecamatan</a></li>
+                <li style="color: #F1601D;"><a href="{!! url() !!}/pemkot/kecamatan/belanja/tipe/bar/id/">Kecamatan</a></li>
                 <li style="color: #F1AD1D;"><a href="{!! url() !!}/pemkot/bumd/belanja/tipe/bar/id/">BUMD</a></li>
                 <li style="color: #BBAE93;"><a href="{!! url() !!}/pemkot/other/belanja/tipe/bar/id/">Lain-lain</a></li>
 	            @endif
@@ -61,10 +65,12 @@
         @for ($i = 0; $i < count($datas); $i++)
         {
             period: '{{ $datas[$i]['year'] }}',
-            a: {{ $datas[$i]['dinas'] }},
-            b: {{ $datas[$i]['kecamatan'] }},
-            c: {{ $datas[$i]['bumd'] }},
-            d: {{ $datas[$i]['other'] }}
+            @for ($j = 0; $j < count($labels); $j++)
+            {{ $alphas[$j] }}: {{ $datas[$i][$j] }}
+            @if($j < count($labels)-1)
+            ,
+            @endif
+            @endfor
         @if($i < count($datas)-1)
         },
         @else
@@ -73,10 +79,31 @@
         @endfor
         ],
         xkey: 'period',
-        ykeys: ['a', 'b', 'c', 'd'],
+        ykeys: [
+            @for ($i = 0; $i < count($labels); $i++)
+            '{{ $alphas[$i] }}'
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
         xLabels: "year",
-        labels: ['Dinas', 'Kecamatan', 'BUMD', 'Other'],
-        lineColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
+        labels: [
+            @for ($i = 0; $i < count($labels); $i++)
+            '{{ $labels[$i] }}'
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
+        lineColors: [
+            @for ($i = 0; $i < count($labels); $i++)
+            "{{ $colors[$i] }}"
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
         pointSize: 3,
         hideHover: 'auto',
         resize: true
@@ -87,10 +114,12 @@
         @for ($i = 0; $i < count($datas); $i++)
         {
             period: '{{ $datas[$i]['year'] }}',
-            a: {{ $datas[$i]['dinas'] }},
-            b: {{ $datas[$i]['kecamatan'] }},
-            c: {{ $datas[$i]['bumd'] }},
-            d: {{ $datas[$i]['other'] }}
+            @for ($j = 0; $j < count($labels); $j++)
+            {{ $alphas[$j] }}: {{ $datas[$i][$j] }}
+            @if($j < count($labels)-1)
+            ,
+            @endif
+            @endfor
         @if($i < count($datas)-1)
         },
         @else
@@ -99,58 +128,32 @@
         @endfor
         ],
         xkey: 'period',
-        ykeys: ['a', 'b', 'c', 'd'],
+        ykeys: [
+            @for ($i = 0; $i < count($labels); $i++)
+            '{{ $alphas[$i] }}'
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
         xLabels: "year",
-        labels: ['Dinas', 'Kecamatan', 'BUMD', 'Other'],
+        labels: [
+            @for ($i = 0; $i < count($labels); $i++)
+            '{{ $labels[$i] }}'
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
         hideHover: 'auto',
-        barColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
-        stacked: true,
-        resize: true
-    });
-	@else
-	Morris.Area({
-        element: 'morris-area-chart',
-        data: [{
-            period: '2014-12-05',
-            a: 10687,
-            b: 4460,
-            c: 4460,
-            d: 2028
-        }, {
-            period: '2015-02-20',
-            a: 8432,
-            b: 5713,
-            c: 5713,
-            d: 2359
-        }],
-        xkey: 'period',
-        ykeys: ['a', 'b', 'c', 'd'],
-        labels: ['Dinas', 'Kecamatan', 'Badan Usaha Milik Daerah', 'Lain-lain'],
-        lineColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
-        pointSize: 3,
-        hideHover: 'auto',
-        resize: true
-    });
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            period: '2014',
-            a: 10687,
-            b: 4460,
-            c: 4460,
-            d: 2028
-        }, {
-            period: '2015',
-            a: 8432,
-            b: 5713,
-            c: 5713,
-            d: 2359
-        }],
-        xkey: 'period',
-        ykeys: ['a', 'b', 'c', 'd'],
-        labels: ['Dinas', 'Kecamatan', 'Badan Usaha Milik Daerah', 'Lain-lain'],
-        hideHover: 'auto',
-        barColors: ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93"],
+        barColors: [
+            @for ($i = 0; $i < count($labels); $i++)
+            "{{ $colors[$i] }}"
+            @if($i < count($labels)-1)
+            ,
+            @endif
+            @endfor
+        ],
         stacked: true,
         resize: true
     });

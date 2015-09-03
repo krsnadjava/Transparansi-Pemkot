@@ -17,6 +17,10 @@ class AppController extends Controller
 {
     public function index()
     {
+
+        $colors = ["#17A768", "#F1601D", "#F1AD1D", "#BBAE93", "#15B768", "#F5701D", "#E1AD2D", "#B5A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3", "#25B764", "#95A01D", "#B17CBD", "#A0A2A3"];
+        $alphas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah", "ai", "aj", "ak"];
+        
         if(session()->has('filter')) {
             /*
             if(session('filter') === "dinas") {
@@ -45,7 +49,7 @@ class AppController extends Controller
                 }
             }
 
-            return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'));
+            return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'))->withColors($colors)->withAlphas($alphas);
         } else {
             if(session()->has('filter')) {
                 $jenis = session('dana');
@@ -79,10 +83,16 @@ class AppController extends Controller
             $datas = [];
             $i = 0;
             foreach ($dinas as $data) {
-                array_push($datas, ['year' => $data->tahun, 'dinas' => $data->sum, 'kecamatan' => $kecamatan[$i]->sum, 'bumd' => $bumd[$i]->sum, 'other' => $other[$i]->sum]);
+                $temp = ['year' => $data->tahun];
+                array_push($temp, $data->sum);
+                array_push($temp, $kecamatan[$i]->sum);
+                array_push($temp, $bumd[$i]->sum);
+                array_push($temp, $other[$i]->sum);
+                array_push($datas, $temp);
                 $i++;
             }
-            return view('monitor.index')->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas);
+            $labels = ["Dinas", "Kecamatan", "BUMD", "Lain-lain"];
+            return view('monitor.index')->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas)->withLabels($labels)->withColors($colors)->withAlphas($alphas);
         }
     }
 
