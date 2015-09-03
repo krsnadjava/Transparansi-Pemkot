@@ -17,7 +17,7 @@
 	        	@if(isset($lembagas))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
-                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/belanja/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
                 <?php $i++; ?>
                 @endforeach
 	        	@else
@@ -43,7 +43,7 @@
 	        	@if(isset($lembagas))
                 <?php $i = 0; ?>
                 @foreach($lembagas as $lembaga)
-                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}">{{ $lembaga->nama }}</a></li>
+                <li style="color: {{ $colors[$i] }};"><a href="{!! url() !!}/dinas/belanja/tipe/area/id/{{ $lembaga->id }}">{{ $lembaga->nama }}</a></li>
                 <?php $i++; ?>
                 @endforeach
 	        	@else

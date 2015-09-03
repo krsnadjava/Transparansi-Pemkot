@@ -34,11 +34,18 @@ class AppController extends Controller
             }
             */
 
-            $jenis = session('dana');
+            
+            if(session()->has('dana')) {
+                $jenis = session('dana');
+            } else {
+                $jenis = "belanja";
+            }
             $breadcrumb = ucwords($jenis)." | ".ucwords(session('filter'));
             if(session()->has('id')) {
                 $id = (int)session('id');
                 $breadcrumb = $breadcrumb." > ".ucwords(Lembaga::findOrFail($id)->nama);
+                $lembagas = null;
+                $danas = null;
             } else {
                 $lembagas = Lembaga::where('golongan', session('filter'))->get();
                 $danas = [];
@@ -51,7 +58,7 @@ class AppController extends Controller
 
             return view('monitor.index')->withBreadcrumb($breadcrumb)->withLembagas($lembagas)->withDanas($danas)->withType(session('type'))->withColors($colors)->withAlphas($alphas);
         } else {
-            if(session()->has('filter')) {
+            if(session()->has('dana')) {
                 $jenis = session('dana');
             } else {
                 $jenis = "belanja";
@@ -92,7 +99,7 @@ class AppController extends Controller
                 $i++;
             }
             $labels = ["Dinas", "Kecamatan", "BUMD", "Lain-lain"];
-            return view('monitor.index')->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas)->withLabels($labels)->withColors($colors)->withAlphas($alphas);
+            return view('monitor.index')->withJenis($jenis)->withBreadcrumb(ucwords($jenis)." | Semua")->withType(session('type'))->withDatas($datas)->withLabels($labels)->withColors($colors)->withAlphas($alphas);
         }
     }
 

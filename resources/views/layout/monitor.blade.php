@@ -80,8 +80,9 @@
                                 <div class="form-group">
                                     <label for="tampil">Tipe Dana</label>
                                     <select class="form-control" id="tampil" onchange="if(this[this.selectedIndex].value!=='')location.href=this.value;">
-                                        <option value="{!! url() !!}">Pendapatan</option>
-                                        <option value="{!! url() !!}">Belanja</option>
+                                        <option value="{!! url() !!}">Tipe Dana</option>
+                                        <option value="{!! url() !!}/transparansi/pendapatan">Pendapatan</option>
+                                        <option value="{!! url() !!}/transparansi/belanja">Belanja</option>
                                     </select>
                                 </div>
                                 <hr>
