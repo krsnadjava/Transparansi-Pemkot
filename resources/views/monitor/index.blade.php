@@ -171,3 +171,99 @@
     });
     @endif
 @endsection
+
+@section('table')
+    <div class="panel-heading">
+        <i class="fa fa-table fa-fw"></i> {{ ucwords($jenis) }} | Tabel Rincian
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>2014</th>
+                        <th>2015</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="header" data-level="0">
+                        <td><i class="fa fa-caret-down"></i> Dinas</td>
+                        <td>2374</td>
+                        <td>1092</td>
+                    </tr>
+                    <tr class="header" data-level="1">
+                        <td style="padding-left:20px;"><i class="fa fa-caret-down"></i> Dinas Pendidikan</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Tidak Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr class="header" data-level="1">
+                        <td style="padding-left:20px;"><i class="fa fa-caret-down"></i> Dinas Kesehatan</td>
+                        <td>1452</td>
+                        <td>510</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Tidak Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr class="header" data-level="1">
+                        <td style="padding-left:20px;"><i class="fa fa-caret-down"></i> Dinas Sosial</td>
+                        <td>630</td>
+                        <td>443</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr data-level="2">
+                        <td style="padding-left:35px;"><i class="fa fa-caret-right"></i> Belanja Tidak Langsung</td>
+                        <td>292</td>
+                        <td>139</td>
+                    </tr>
+                    <tr class="header" data-level="0">
+                        <td><i class="fa fa-caret-right"></i> Kecamatan</td>
+                        <td>7287</td>
+                        <td>7912</td>
+                    </tr>
+                    <tr class="header" data-level="0">
+                        <td><i class="fa fa-caret-right"></i> BUMBD</td>
+                        <td>8298</td>
+                        <td>8342</td>
+                    </tr>
+                    <tr class="header" data-level="0">
+                        <td><i class="fa fa-caret-right"></i> Lain-lain</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>2014</th>
+                        <th>2015</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+@endsection

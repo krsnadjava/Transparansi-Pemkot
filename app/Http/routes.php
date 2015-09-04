@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect()->route('transparansi');
 });
 
+Route::get('/top/{tipeDana?}', function ($tipeDana = "belanja") {
+    return redirect()->route('transparansi')->withDana($tipeDana)->withTop("top");
+});
+
 Route::get('/transparansi', [
     'as' => 'transparansi', 'uses' => 'AppController@index'
 ]);
