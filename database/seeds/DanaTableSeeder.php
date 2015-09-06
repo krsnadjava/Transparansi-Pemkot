@@ -32,6 +32,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 1,
+            'dana_id' => 1,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -42,6 +43,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 1,
+            'dana_id' => 2,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -52,6 +54,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 1,
+            'dana_id' => 1,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -72,6 +75,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 1,
+            'dana_id' => 5,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -82,6 +86,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 1,
+            'dana_id' => 6,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -92,6 +97,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 1,
+            'dana_id' => 5,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -115,6 +121,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 9,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -125,6 +132,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 2,
+            'dana_id' => 10,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -135,6 +143,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 9,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -155,6 +164,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 13,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -165,6 +175,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 2,
+            'dana_id' => 14,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -175,6 +186,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 13,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -196,6 +208,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 17,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -216,6 +229,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 2,
+            'dana_id' => 19,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -239,6 +253,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 55,
+            'dana_id' => 21,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -249,6 +264,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 55,
+            'dana_id' => 22,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -259,6 +275,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 55,
+            'dana_id' => 21,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -279,6 +296,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 55,
+            'dana_id' => 25,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -289,6 +307,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 55,
+            'dana_id' => 26,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -299,6 +318,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 55,
+            'dana_id' => 25,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -322,6 +342,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 56,
+            'dana_id' => 29,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -332,6 +353,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 56,
+            'dana_id' => 30,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -342,6 +364,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 56,
+            'dana_id' => 29,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -362,6 +385,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 56,
+            'dana_id' => 33,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -372,6 +396,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 56,
+            'dana_id' => 34,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -382,6 +407,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 56,
+            'dana_id' => 33,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -405,6 +431,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 5,
+            'dana_id' => 37,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -415,6 +442,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 5,
+            'dana_id' => 38,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -425,6 +453,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 5,
+            'dana_id' => 37,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -445,6 +474,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 5,
+            'dana_id' => 41,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -455,6 +485,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 5,
+            'dana_id' => 42,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -465,6 +496,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 5,
+            'dana_id' => 41,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -488,6 +520,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 6,
+            'dana_id' => 45,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -498,6 +531,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 6,
+            'dana_id' => 46,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -508,6 +542,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 6,
+            'dana_id' => 45,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -528,6 +563,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 6,
+            'dana_id' => 49,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -538,6 +574,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 6,
+            'dana_id' => 50,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -548,6 +585,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 6,
+            'dana_id' => 49,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -571,6 +609,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 24,
+            'dana_id' => 53,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -581,6 +620,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 24,
+            'dana_id' => 54,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -591,6 +631,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 24,
+            'dana_id' => 53,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -611,6 +652,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 24,
+            'dana_id' => 57,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -621,6 +663,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 24,
+            'dana_id' => 58,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -631,6 +674,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 24,
+            'dana_id' => 57,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -654,6 +698,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 25,
+            'dana_id' => 61,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -664,6 +709,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 3,
             'lembaga_id' => 25,
+            'dana_id' => 62,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -674,6 +720,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2014,
             'level' => 2,
             'lembaga_id' => 25,
+            'dana_id' => 61,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -694,6 +741,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 25,
+            'dana_id' => 65,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -704,6 +752,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 3,
             'lembaga_id' => 25,
+            'dana_id' => 66,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);
@@ -714,6 +763,7 @@ class DanaTableSeeder extends Seeder
             'tahun' => 2015,
             'level' => 2,
             'lembaga_id' => 25,
+            'dana_id' => 65,
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         ]);

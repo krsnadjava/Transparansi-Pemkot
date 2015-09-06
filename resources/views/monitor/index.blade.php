@@ -183,11 +183,32 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>2014</th>
-                        <th>2015</th>
+                        @if(isset($years))
+                        @for($i = 0; $i < count($years); $i++)
+                        <th style="text-align:center;">{{ $years[$i] }}</th>
+                        @endfor
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
+                    @if(isset($tables))
+                    @for($i = 0; $i < count($tables); $i++)
+                    @if($tables[$i]['level'] > 0)
+                    <tr class="header" data-level="{{ $tables[$i]['level'] }}" style="display:none;">
+                    @else
+                    <tr class="header" data-level="{{ $tables[$i]['level'] }}">
+                    @endif
+                        @if($tables[$i]['level'] > 0)
+                        <td><i class="fa fa-caret-right" style="padding-left:{{ 5+($tables[$i]['level']*15) }}px;"></i> {{ $tables[$i]['nama'] }}</td>
+                        @else
+                        <td><i class="fa fa-caret-right"></i> {{ $tables[$i]['nama'] }}</td>
+                        @endif
+                        @for($j = 0; $j < count($years); $j++)
+                        <td style="text-align:right;">{{ $tables[$i][$j] }}</td>
+                        @endfor
+                    </tr>
+                    @endfor
+                    @else
                     <tr class="header" data-level="0">
                         <td><i class="fa fa-caret-down"></i> Dinas</td>
                         <td>2374</td>
@@ -253,12 +274,19 @@
                         <td>Larry</td>
                         <td>the Bird</td>
                     </tr>
+                    @endif
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Total</th>
+                        @if(isset($years) && isset($total))
+                        @for($i = 0; $i < count($years); $i++)
+                        <th style="text-align:right;">{{ $total[$i] }}</th>
+                        @endfor
+                        @else
                         <th>2014</th>
                         <th>2015</th>
+                        @endif
                     </tr>
                 </tfoot>
             </table>
