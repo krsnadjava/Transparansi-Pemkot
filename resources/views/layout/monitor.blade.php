@@ -89,6 +89,7 @@
                                 <div class="form-group">
                                     <label>Hanya tampilkan</label>
                                     <div class="checkbox">
+                                        <i class="fa fa-caret-right"></i>
                                         <label>
                                             <input type="checkbox" checked> <a>Dinas</a>
                                         </label>

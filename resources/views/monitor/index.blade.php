@@ -118,6 +118,15 @@
         ],
         pointSize: 3,
         hideHover: 'auto',
+        hoverCallback: function (index, options, content, row) {
+          var total = 0;
+          @for ($i = 0; $i < count($labels); $i++)
+            total += row.{{ $alphas[$i] }};
+          @endfor
+          return content+"<div class='morris-hover-row-label'>Total : "
+            + total
+            +"</div>";
+        },
         resize: true
     });
     Morris.Bar({
@@ -158,6 +167,15 @@
             @endfor
         ],
         hideHover: 'auto',
+        hoverCallback: function (index, options, content, row) {
+          var total = 0;
+          @for ($i = 0; $i < count($labels); $i++)
+            total += row.{{ $alphas[$i] }};
+          @endfor
+          return content+"<div class='morris-hover-row-label'>Total : "
+            + total
+            +"</div>";
+        },
         barColors: [
             @for ($i = 0; $i < count($labels); $i++)
             "{{ $colors[$i] }}"

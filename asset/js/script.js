@@ -66,11 +66,30 @@ $(document).ready(function(){
         return children;
     }
 
-    $('.header').click(function(){
+    $('tr.header').click(function(){
         var children = getChildren($(this));
         var metaParent = $(this);
         var parent = $(this).find('i');
         $(this).find('i').toggleClass("fa-caret-down").toggleClass("fa-caret-right");
+        $(this).find('td.data > span').toggleClass("hidden");
+        $.each(children, function() {
+            if(parent.hasClass("fa-caret-right")) {
+                $(this).slideUp();
+                $(this).find('i').removeClass("fa-caret-down").addClass("fa-caret-right");
+                $(this).find('td.data > span').removeClass("hidden");
+            } else {
+                if((parseInt(metaParent.attr('data-level'))+1) === parseInt($(this).attr('data-level'))) {
+                    $(this).slideDown();
+                }
+            }
+        });
+    });
+
+    $('div.header > i.fa').click(function(){
+        var children = getChildren($(this).parent());
+        var metaParent = $(this).parent();
+        var parent = $(this);
+        $(this).toggleClass("fa-caret-down").toggleClass("fa-caret-right");
         $.each(children, function() {
             if(parent.hasClass("fa-caret-right")) {
                 $(this).slideUp();

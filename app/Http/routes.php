@@ -19,8 +19,16 @@ Route::get('/top/{tipeDana?}', function ($tipeDana = "belanja") {
     return redirect()->route('transparansi')->withDana($tipeDana)->withTop("top");
 });
 
+Route::get('/tag/top', function () {
+    return redirect()->route('transparansi')->withTag("tag")->withTop("top");
+});
+
+Route::get('/ratio/top', function () {
+    return redirect()->route('transparansi')->withTag("ratio")->withTop("top");
+});
+
 Route::get('/transparansi', [
-    'as' => 'transparansi', 'uses' => 'AppController@index'
+    'as' => 'transparansi', 'uses' => 'DataController@index'
 ]);
 
 Route::get('/transparansi/{tipeDana?}', function ($tipeDana = "belanja") {
@@ -52,5 +60,9 @@ Route::get('/input', ['as' => 'data.input', function () {
     $tags = App\Tag::all();
     return view('monitor.new')->withLembagas($lembagas)->withTags($tags);
 }]);
+
+Route::post('/exclude', [
+    'as' => 'exclude', 'uses' => 'DataController@exclude'
+]);
 
 Route::post('/input', ['as' => 'data.store', 'uses' => 'AppController@store']);
